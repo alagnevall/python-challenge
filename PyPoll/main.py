@@ -3,7 +3,7 @@ import os
 import csv
 
 #create paths to resources 
-csvpath = os.path.join('..','Resources','election_data.csv')
+csvpath = os.path.join('Resources','election_data.csv')
 
 #variable for total count
 
