@@ -4,40 +4,48 @@ import csv
 
 #create paths to resources 
 csvpath = os.path.join('Resources','election_data.csv')
+total = 0
 
-#variable for total count
+with open(csvpath) as csvfile:
 
-#create and empty list for candidate options
+    #pass the header row
+    next(csvfile)
+    csvreader = csv.reader(csvfile, delimiter="," )
 
-#create a dictionary for candidate votes
+#create an empty lists for candidate options. 1 without duplicates and 1 full list
+    candidate = []
+    candidate2 =[]
 
-#creae a string variable for winning candidate
+#create for loop to grab total votes
+    for row in csvreader:
+        total += 1 #this is the same as total = total + 1
 
-#create a winning count integer variable
+        #get rid of the duplicate candidates and append into empty list
+        if row[2] not in candidate:
+            candidate.append(row[2])
 
-#read the csv and covert it into a list of dictionaries
+        #full list of candidates to tally up votes    
+        candidate2.append(row[2])  
 
-#read the header
+    #print the total amount of votes      
+    print("-"*30)        
+    print(f'Total amount of vote: {total}')
+    print("-"*30)   
 
-#for loop each row
+#create for loop to calculate percentage of votes and the total amount of votes using the f function
+    for name in candidate:
+        print(f'{name}: {round((candidate2.count(name)/total)*100, 2)}%  ({candidate2.count(name)})')  
 
-#add to the total number of votes cast
+#print the winner but finding the most commonly used variable in the full list       
+    print("-"*30) 
+    print(f'Winner is: {max(set(candidate2), key=candidate2.count)}')
+    print("-"*30) 
+  
+  
 
-#list all cadidates who received votes
 
-#if candidate doesnt exist in list then add the candidate
-    #add candidate
-    #put candidate votes into dictionary to start tracking
-#add vote to candidate count
-#print results and send to text files
 
-#print final vote count to terminal
 
-#print final vote count to text files
-
-#loop to find the winner
-
-#print the winning candidate
 
 
 
