@@ -1,6 +1,7 @@
 #put modules in
 import os
 import csv
+file = open("PyPoll_results.txt","w")
 
 #create paths to resources 
 csvpath = os.path.join('Resources','election_data.csv')
@@ -30,16 +31,29 @@ with open(csvpath) as csvfile:
     #print the total amount of votes      
     print("-"*30)        
     print(f'Total amount of vote: {total}')
-    print("-"*30)   
+    print("-"*30)  
+
+    file.write("-"*30 + "\n")        
+    file.write(f'Total amount of vote: {total}\n')
+    file.write("-"*30 + "\n") 
 
 #create for loop to calculate percentage of votes and the total amount of votes using the f function
     for name in candidate:
         print(f'{name}: {round((candidate2.count(name)/total)*100, 2)}%  ({candidate2.count(name)})')  
+        file.write(f'{name}: {round((candidate2.count(name)/total)*100, 2)}%  ({candidate2.count(name)})\n')  
 
 #print the winner but finding the most commonly used variable in the full list       
     print("-"*30) 
     print(f'Winner is: {max(set(candidate2), key=candidate2.count)}')
     print("-"*30) 
+
+    file.write("-"*30 + "\n") 
+    file.write(f'Winner is: {max(set(candidate2), key=candidate2.count)}\n')
+    file.write("-"*30 + "\n")
+
+file.close()
+
+
   
   
 
